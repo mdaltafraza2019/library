@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags%}
+{%block title%} <title>login</title>{%endblock%}
+{%block body%}
+<div class="row mt-3">
+    <div class="col-lg-6 mx-auto bg-primary-subtle ">
+        <h4 class="w-100, text-center text-danger">Login</h4>
+    {%if messages%}
+        {%for i in messages%}
+        <div class="alert alert-danger" role="alert">
+            {{i}}
+          </div>
+          {%endfor%}
+     {%endif%}
+        <form action="" method="post" class="form bg-primary-subtle p-3">
+            {%csrf_token%}
+            {{form|crispy}}
+            <button type="submit" class="btn w-100 bg-success">login</button>
+        </form>
+        <a href="{%url 'register'%}">New_user?? Register</a>
+    </div>
+</div>
+{%endblock%}

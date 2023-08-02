@@ -1,0 +1,77 @@
+{%extends 'base.html'%}
+{%block title%} <title>home</title>{%endblock%}
+{%block body%}
+
+<div class="contianer ">
+    <div class="row mt-3" >
+      
+        <div class="col-lg-2 ">
+            <div class="dropdown w-100 p-2 m-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Filter A/C to course
+                </button>
+                <ul class="dropdown-menu">
+                  {%for i in category%}
+                  <li><a class="dropdown-item" href="{%url 'category' i.slug%}">{{i.course}}</a></li>
+                  {%endfor%}
+                
+                </ul>
+            </div>
+            <div class="dropdown w-100 p-2 m-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Filter A/C shift
+                </button>
+                <ul class="dropdown-menu">
+                  {%for i in shift%}
+                  <li><a class="dropdown-item" href="{%url 'shift' i.slug%}">{{i.shift_title}}</a></li>
+                  {%endfor%}
+                
+                </ul>
+            </div>
+            
+           
+              
+        </div>
+        <div class="col-lg-10">
+           
+            <table class="table table-striped">
+                <tr>
+                    <th>Reg.no</th>
+                    <th>Name</th>
+                    <th>Mob</th>
+                    <th>adhar-no</th>
+                    <th>shift</th>
+                    <th>Prep_for</th>
+                    <th>Payment</th>
+                    <th>Mode_of_payment</th>
+                    <th>Date</th>
+                    <th></th>
+                    <th></th>
+                    
+                </tr>
+    
+                {%for i in student%}
+                <tr>
+                    <td>{{i.reg_no}}</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.mob_no}}</td>
+                    <td>{{i.adhar_no}}</td>
+                    <td>{{i.shift}}</td>
+                    <td>{{i.prep_for}}</td>
+                    <td>{{i.payment}}</td>
+                    <td>{{i.mode_of_payment}}</td>
+                    <td>{{i.date_of_joining}}</td>
+                  
+                   <td><a href="{%url 'update' i.id%}" class="btn bg-success text-light p-2">update</a></td>
+                   <td><a href="{%url 'delete' i.id%}" class="btn bg-danger text-light p-2" onclick="alert">delete</a></td>
+                  
+                  
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+       </div>
+    </div>
+</div>
+
+{%endblock%}
